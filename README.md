@@ -3,7 +3,7 @@ SD5913
 
 1.Open the python file with 3.10 Interpreter 
 
-2.Open new terminal, input: streamlit run "merge_page.py"
+2.Open new terminal, choose the root to assignment3_Duan-main\ChromaBeat,then input:streamlit run .\merge_page.py
 
 3.A streamlit app page will pop up
 
