@@ -45,10 +45,16 @@ st.write(f"Using mrange = {mrange}")
 def generate_music(mrange):
     s.start()
     wav = SquareTable()
-    env = CosTable([(0,0), (100,1), (500,0.2),(1000,0.4),(5000,0.2),(8191,0)])
-    met = Metro(.125,12).play()
+    b = random.randint(50, 1600) * 5  # 生成一个随机整数，范围从 10 到 8000
+    c = random.randint(b // 5 + 1, 1600) * 5  # 生成一个随机整数，范围从 b + 5 到 8000
+    d = random.randint(c // 5 + 1, 1600) * 5  # 生成一个随机整数，范围从 c + 5 到 8000
+    e = random.randint(d // 5 + 1, 1600) * 5  # 生成一个随机整数，范围从 d + 5 到 8000
+    env = CosTable([(0,0), (b,1), (c,0.2),(d,0.4),(e,0.2),(8191,0)])
+    a = random.randint(2, 24) // 2 * 2
+    met = Metro(.125, a).play()
     amp = TrigEnv(met, table=env, mul=.1)
-    pit = TrigXnoiseMidi(met, dist='loopseg', x1=90, scale=1, mrange=mrange)
+    x1 = random.randint(7, 121)
+    pit = TrigXnoiseMidi(met, dist='loopseg', x1=x1, scale=1, mrange=mrange)
     out = Osc(table=wav, freq=pit, mul=amp).out()
     st.write("Playing music...")
     time.sleep(12)
